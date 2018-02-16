@@ -3,7 +3,11 @@ function ImageController() {
 	var imgService = new ImageService()
 
 	function draw(res){
-		var bodyElem = document.getElementById('body')
+		var url = res.url
+		document.body.style.backgroundImage = "url(" + url + ")";
+		document.body.style.backgroundRepeat = 'no-repeat'
+		document.body.style.backgroundPosition = 'center center'
+		document.body.style.backgroundSize = 'cover'
 	}
 
 	imgService.getImage(draw)
