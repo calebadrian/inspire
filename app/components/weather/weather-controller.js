@@ -11,9 +11,9 @@ function WeatherController(){
 	function draw(weather){
 		var template = ''
 		template += `
-		${weather.weather[0].icon}
-		${weather.main.temp}
-		${weather.name}`
+		<img class="mr-2" src="http://openweathermap.org/img/w/${weather.weather[0].icon}.png">
+		<h5 class="mr-2">${weather.name}</h5>
+		<h5>${weather.main.temp}&#8457</h5>`
 		weatherElem.innerHTML = template
 	}
 

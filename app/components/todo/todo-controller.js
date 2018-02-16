@@ -7,6 +7,8 @@ function TodoController() {
 	// removeTodo takes in a todoId and sends a delete request to the server
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
+	var todoElem = document.getElementById('todo-list')
+	var taskElem = document.getElementById('task-form')
 
 	// Use this getTodos function as your callback for all other edits
 	function getTodos(){
@@ -17,37 +19,52 @@ function TodoController() {
 	function draw(todos) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
-		var template = ''
+		var template = `<h5>${todos.length} To Do</h5>`
+		for (let i = 0; i < todos.length; i++) {
+			const todo = todos[i];
+			template += `
+			<div class="d-inline-flex">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" onclick="app.controllers.todoCtrl.toggleTodoStatus('${todo.id}')">
+			</div>
+			<h6>${todo.name}</h6>
+			<i class="far fa-trash-alt remove-icon" onclick="app.controllers.todoCtrl.removeTodo('${todo.id}')"></i>
+			</div>`
+		}
+		template += `<button class="btn-info" onclick="app.controllers.todoCtrl.showTaskForm()">New Todo</button>`
+		todoElem.innerHTML = template
 		//DONT FORGET TO LOOP
 	}
 
-	this.addTodoFromForm = function (e) {
+	this.addTodoFromForm = function addTodoFromForm(e) {
 		e.preventDefault() // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
 		var form = e.target
-		var todo = {
-			// DONT FORGET TO BUILD YOUR TODO OBJECT
-		}
-
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
-		todoService.addTodo(todo, getTodos)
+		todoService.addTodo(form, draw)
+		form.reset()
+		taskElem.classList.add('hidden')
 		                         //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
-	this.toggleTodoStatus = function (todoId) {
+	this.toggleTodoStatus = function toggleTodoStatus(todoId) {
 		// asks the service to edit the todo status
 		todoService.toggleTodoStatus(todoId, getTodos)
 		// YEP THATS IT FOR ME
 	}
 
-	this.removeTodo = function (todoId) {
+	this.removeTodo = function removeTodo(todoId) {
 		// ask the service to run the remove todo with this id
-
+		todoService.removeTodo(todoId, draw)
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 
-	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
+	this.showTaskForm = function showTaskForm(){
+		taskElem.classList.remove('hidden')
+	}
 
+	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
+	getTodos()
 }

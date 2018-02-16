@@ -4,6 +4,6 @@ var app = {
     weatherController: new WeatherController(),
     imgCtrl: new ImageController(),
     quoteCtrl: new QuoteController(),
-    
+    todoCtrl: new TodoController()
   }
 }
