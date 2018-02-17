@@ -2,11 +2,6 @@ function WeatherController(){
 	var wc = this;
 	var weatherService = new WeatherService();
 	var weatherElem = document.getElementById('weather')
-	
-	// weatherService.getWeather(function(weather){
-	// 	console.log(weather);
-	// 	//What can you do with this weather object?
-	// })
 
 	function draw(weather, swap){
 		var template = ''

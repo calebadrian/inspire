@@ -19,7 +19,10 @@
 			</div>
 		</div>
 		<div class="row d-flex flex-column justify-content-center align-items-center main">
-			<div id="time" class="text-center">
+			<div id="twelve-time" class="text-center">
+
+			</div>
+			<div id="twentyfour-time" class="text-center hidden">
 
 			</div>
 		</div>
@@ -30,6 +33,7 @@
 					<button class="btn-info" onclick="app.controllers.imgCtrl.getNewImg()">Get New Image</button>
 					<button class="btn-info" onclick="app.controllers.weatherController.changeTemp(true)">Change Temp F</button>
 					<button class="btn-info" onclick="app.controllers.weatherController.changeTemp(false)">Change Temp C</button>
+					<button class="btn-info" onclick="app.controllers.timeCtrl.toggleClock()">Toggle Clock</button>
 				</div>
 			</div>
 			<div class="col-sm-6 d-flex justify-content-center align-items-end">
@@ -71,6 +75,7 @@
 	<script src="app/components/image/image-controller.js"></script>
 	<script src="app/components/quote/quote-controller.js"></script>
 	<script src="app/components/todo/todo-controller.js"></script>
+	<script src="app/components/time/time-controller.js"></script>
 
 	<!--Initialize App-->
 	<script src="app/init.js"></script>
