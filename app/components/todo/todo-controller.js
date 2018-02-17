@@ -23,9 +23,9 @@ function TodoController() {
 		for (let i = 0; i < todos.length; i++) {
 			const todo = todos[i];
 			template += `
-			<div class="d-inline-flex">
+			<div class="d-inline-flex justify-content-between">
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" onclick="app.controllers.todoCtrl.toggleTodoStatus('${todo.id}')">
+				<input class="form-check-input" type="checkbox" ${todo.completed ? ('checked') : ''} onclick="app.controllers.todoCtrl.toggleTodoStatus('${todo.id}')">
 			</div>
 			<h6>${todo.name}</h6>
 			<i class="far fa-trash-alt remove-icon" onclick="app.controllers.todoCtrl.removeTodo('${todo.id}')"></i>

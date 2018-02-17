@@ -10,6 +10,10 @@ function ImageController() {
 		document.body.style.backgroundSize = 'cover'
 	}
 
+	this.getNewImg = function getNewImg(){
+		imgService.getImage(draw)
+	}
+
 	imgService.getImage(draw)
 }
 

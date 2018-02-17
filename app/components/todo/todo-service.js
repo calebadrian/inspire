@@ -26,7 +26,12 @@ function TodoService() {
 	this.addTodo = function addTodo(form, cb) {
 		// WHAT IS THIS FOR???
 		var toDo = new ToDo(form)
-		$.post(baseUrl, toDo)
+		$.ajax({
+			url: baseUrl, 
+			method: 'POST',
+			data: JSON.stringify(toDo),
+			contentType: 'application/json',
+		})
 			.then(res => { // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
 				this.getTodos(cb)
 			}) 
