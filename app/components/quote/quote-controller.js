@@ -10,7 +10,7 @@ function QuoteController(){
 	function draw(quote){
 		var template = ''
 		template += `
-		<h5 class="quote bg-style text-center" onmouseover="app.controllers.quoteCtrl.revealAuthor()" onmouseout="app.controllers.quoteCtrl.revealAuthor()">${quote.quote}</h5>
+		<h5 class="quote bg-style text-center" onmouseenter="app.controllers.quoteCtrl.revealAuthor()" onmouseleave="app.controllers.quoteCtrl.revealAuthor()">${quote.quote}</h5>
 		<h6 class="hidden bg-style text-center" id="author">${quote.author}</h6>`
 		quoteElem.innerHTML = template
 	}
