@@ -1,1 +1,1 @@
-.remove-icon{transition:all .3s linear;color:red;opacity:.5;cursor:pointer}.remove-icon:hover{opacity:1}.hidden{height:0;opacity:0;cursor:default;pointer-events:none}.main{min-height:35vh}.bg-style{color:white}
+.remove-icon{transition:all .3s linear;color:red;opacity:.5;cursor:pointer}.remove-icon:hover{opacity:1}.hidden{height:0;width:0;opacity:0;cursor:default;pointer-events:none}.bg-style{color:white}.full-height{height:100%}body{max-height:100vh}

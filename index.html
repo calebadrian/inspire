@@ -10,7 +10,7 @@
 </head>
 
 <body id="body">
-	<div class="container-fluid">
+	<div class="container-fluid d-flex flex-column justify-content-between full-height">
 		<div class="row d-flex justify-content-end">
 			<div class="col-sm-3 bg-style">
 				<div id="weather" class="d-flex justify-content-around align-items-center">
@@ -25,6 +25,7 @@
 			<div id="twentyfour-time" class="text-center hidden">
 
 			</div>
+			<h3 id="user-name" class="text-center bg-style"></h3>
 		</div>
 		<div class="row d-flex justify-content-between">
 			<div class="col-sm-3 d-flex align-items-end justify-content-start">
@@ -34,7 +35,18 @@
 					<button class="btn-info" onclick="app.controllers.weatherController.changeTemp(true)">Change Temp F</button>
 					<button class="btn-info" onclick="app.controllers.weatherController.changeTemp(false)">Change Temp C</button>
 					<button class="btn-info" onclick="app.controllers.timeCtrl.toggleClock()">Toggle Clock</button>
+					<button class="btn-info" onclick="app.controllers.timeCtrl.showAddUserForm()">Edit Name</button>
 				</div>
+				<form onsubmit="app.controllers.timeCtrl.editUser(event)" class="hidden" id="user-form">
+					<div class="form-group">
+						<label for="name">Name:</label>
+						<input type="text" name="name" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Edit Name</button>
+						<button type="reset" class="btn btn-danger">Clear</button>
+					</div>
+				</form>
 			</div>
 			<div class="col-sm-6 d-flex justify-content-center align-items-end">
 				<div id="quote">
@@ -69,6 +81,7 @@
 	<script src="app/components/image/image-service.js"></script>
 	<script src="app/components/quote/quote-service.js"></script>
 	<script src="app/components/todo/todo-service.js"></script>
+	<script src="app/components/time/time-service.js"></script>
 
 	<!--Controllers-->
 	<script src="app/components/weather/weather-controller.js"></script>
