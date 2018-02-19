@@ -17,5 +17,5 @@ function WeatherService() {
 			// You should probably convert the temperature data
 			callWhenDone(res, farenheit);
 		})
-	}
+	} 
 }

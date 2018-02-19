@@ -11,13 +11,13 @@ function QuoteController(){
 		var template = ''
 		template += `
 		<h5 class="quote bg-style text-center" onmouseenter="app.controllers.quoteCtrl.revealAuthor()" onmouseleave="app.controllers.quoteCtrl.revealAuthor()">${quote.quote}</h5>
-		<h6 class="hidden bg-style text-center" id="author">${quote.author}</h6>`
+		<h6 class="bg-style text-center hidden-text" id="author">${quote.author}</h6>`
 		quoteElem.innerHTML = template
 	}
 
 	this.revealAuthor = function revealAuthor(){
 		var authorElem = document.getElementById('author')
-		authorElem.classList.toggle('hidden')
+		authorElem.classList.toggle('hidden-text')
 	}
 	qs.getQuote(draw)
 }

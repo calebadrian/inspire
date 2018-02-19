@@ -6,14 +6,14 @@ function TimeController(){
     function twelveClock() {
         var now = new Date()
         var hours = now.getHours() > 12 ? now.getHours() - 12 : now.getHours()
-        var amPm = now.getHours() > 12 ? 'PM' : 'AM'
+        var amPm = now.getHours() >= 12 ? 'PM' : 'AM'
         var minutes = now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes()
         var seconds = now.getSeconds() < 10 ? '0' + now.getSeconds() : now.getSeconds()
         var time = hours + ':' + minutes + ':' + seconds + ' ' + amPm
 		var template = `<h1 class="bg-style">${time}</h1>`
 		if (now.getHours() < 12){
 			template += `<h3 class="bg-style">Good Morning</h3>`
-		} else if (now.getHours()> 12 && now.getHours() < 18){
+		} else if (now.getHours()>= 12 && now.getHours() < 18){
 			template += `<h3 class="bg-style">Good Afternoon</h3>`
 		} else if (now.getHours() >= 18){
 			template += `<h3 class="bg-style">Good Evening</h3>`

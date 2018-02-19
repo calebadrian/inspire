@@ -29,24 +29,49 @@
 		</div>
 		<div class="row d-flex justify-content-between">
 			<div class="col-sm-3 d-flex align-items-end justify-content-start">
-				<i class="fas fa-2x fa-cog bg-style" onclick="app.controllers.weatherController.showSettingsMenu()"></i>
-				<div id="settings" class="hidden d-flex flex-column">
-					<button class="btn-info" onclick="app.controllers.imgCtrl.getNewImg()">Get New Image</button>
-					<button class="btn-info" onclick="app.controllers.weatherController.changeTemp(true)">Change Temp F</button>
-					<button class="btn-info" onclick="app.controllers.weatherController.changeTemp(false)">Change Temp C</button>
-					<button class="btn-info" onclick="app.controllers.timeCtrl.toggleClock()">Toggle Clock</button>
-					<button class="btn-info" onclick="app.controllers.timeCtrl.showAddUserForm()">Edit Name</button>
+				<button class="btn-primary" data-toggle="modal" data-target="#exampleModal">Settings</button>
+				<div class="modal fade settings-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+				 aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<button class="btn-info" onclick="app.controllers.imgCtrl.getNewImg()" data-dismiss="modal">Get New Image</button>
+								<button class="btn-info" onclick="app.controllers.weatherController.changeTemp(true)" data-dismiss="modal">Change Temp F</button>
+								<button class="btn-info" onclick="app.controllers.weatherController.changeTemp(false)" data-dismiss="modal">Change Temp C</button>
+								<button class="btn-info" onclick="app.controllers.timeCtrl.toggleClock()" data-dismiss="modal">Toggle Clock</button>
+								<button class="btn-info" data-dismiss="modal" data-toggle="modal" data-target="#editNameModal">Edit Name</button>
+							</div>
+						</div>
+					</div>
 				</div>
-				<form onsubmit="app.controllers.timeCtrl.editUser(event)" class="hidden" id="user-form">
-					<div class="form-group">
-						<label for="name">Name:</label>
-						<input type="text" name="name" class="form-control" required>
+				<div class="modal fade settings-modal" id="editNameModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Edit User Name</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<form onsubmit="app.controllers.timeCtrl.editUser(event)" id="user-form">
+								<div class="form-group">
+									<label for="name">Name:</label>
+									<input type="text" name="name" class="form-control" required>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-success" data-dismiss="modal">Edit Name</button>
+									<button type="reset" class="btn btn-danger">Clear</button>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-success">Edit Name</button>
-						<button type="reset" class="btn btn-danger">Clear</button>
-					</div>
-				</form>
+				</div>
 			</div>
 			<div class="col-sm-6 d-flex justify-content-center align-items-end">
 				<div id="quote">
@@ -54,18 +79,30 @@
 				</div>
 			</div>
 			<div class="col-sm-3" id="todo">
-				<form onsubmit="app.controllers.todoCtrl.addTodoFromForm(event)" class="hidden" id="task-form">
-					<div class="form-group">
-						<label for="name">Name:</label>
-						<input type="text" name="name" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-success">Add Task</button>
-						<button type="reset" class="btn btn-danger">Clear</button>
-					</div>
-				</form>
 				<div id="todo-list" class="d-flex flex-column bg-style text-center">
 
+				</div>
+				<div class="modal fade form-modal" id="todoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Add To Do</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<form onsubmit="app.controllers.todoCtrl.addTodoFromForm(event)" id="task-form">
+								<div class="form-group">
+									<label for="name">Name:</label>
+									<input type="text" name="name" class="form-control" required>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-success" data-dismiss="modal">Add Task</button>
+									<button type="reset" class="btn btn-danger">Clear</button>
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -76,6 +113,10 @@
 
 	<!--JS Libraries-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	 crossorigin="anonymous"></script>
 	<!--Services-->
 	<script src="app/components/weather/weather-service.js"></script>
 	<script src="app/components/image/image-service.js"></script>

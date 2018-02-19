@@ -31,7 +31,7 @@ function TodoController() {
 			<i class="far fa-trash-alt remove-icon" onclick="app.controllers.todoCtrl.removeTodo('${todo.id}')"></i>
 			</div>`
 		}
-		template += `<button class="btn-info" onclick="app.controllers.todoCtrl.showTaskForm()">New Todo</button>`
+		template += `<button class="btn-info" data-toggle="modal" data-target="#todoModal">New Todo</button>`
 		todoElem.innerHTML = template
 		//DONT FORGET TO LOOP
 	}
