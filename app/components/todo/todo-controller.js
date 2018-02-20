@@ -45,7 +45,6 @@ function TodoController() {
 		//YOU SHOULDN'T NEED TO CHANGE THIS
 		todoService.addTodo(form, draw)
 		form.reset()
-		taskElem.classList.add('hidden')
 		                         //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
