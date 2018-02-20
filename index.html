@@ -30,7 +30,7 @@
 		<div class="row d-flex justify-content-between">
 			<div class="col-sm-3 d-flex align-items-end justify-content-start">
 				<button class="btn-primary" data-toggle="modal" data-target="#exampleModal">Settings</button>
-				<div class="modal fade settings-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+				<div class="modal fade settings-modal color-black" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 				 aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -40,17 +40,18 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div class="modal-body">
+							<div class="modal-body text-center">
 								<button class="btn-info" onclick="app.controllers.imgCtrl.getNewImg()" data-dismiss="modal">Get New Image</button>
 								<button class="btn-info" onclick="app.controllers.weatherController.changeTemp(true)" data-dismiss="modal">Change Temp F</button>
 								<button class="btn-info" onclick="app.controllers.weatherController.changeTemp(false)" data-dismiss="modal">Change Temp C</button>
 								<button class="btn-info" onclick="app.controllers.timeCtrl.toggleClock()" data-dismiss="modal">Toggle Clock</button>
+								<button class="btn-info" onclick="app.controllers.timeCtrl.toggleText()" data-dismiss="modal">Toggle Text Color</button>
 								<button class="btn-info" data-dismiss="modal" data-toggle="modal" data-target="#editNameModal">Edit Name</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="modal fade settings-modal" id="editNameModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+				<div class="modal fade settings-modal color-black" id="editNameModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -82,7 +83,7 @@
 				<div id="todo-list" class="d-flex flex-column bg-style text-center">
 
 				</div>
-				<div class="modal fade form-modal" id="todoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+				<div class="modal fade form-modal color-black" id="todoModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
