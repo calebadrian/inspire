@@ -42,12 +42,9 @@ function TimeController(){
 		setTimeout(twentyfourClock, 1000);
     }
 
-    function drawUserName(res){
-        if (res.length < 1){
-            userName.innerText = 'Add a user to see your name here'
-            return
-        }
-        userName.innerText = `${res[0].name}`
+    function drawUserName(){
+        var user = timeService.getUser()
+        userName.innerText = `${user.name}`
     }
 
     this.toggleClock = function toggleClock(){
@@ -62,30 +59,17 @@ function TimeController(){
         }
     }
 
-    this.showAddUserForm = function showAddUserForm(){
-        var userElem = document.getElementById('user-form')
-        userElem.classList.remove('hidden')
-    }
-
-    this.addUser = function addUser(event){
-        event.preventDefault()
-        var form = event.target
-        timeService.addUser(form, drawUserName)
-        document.getElementById('user-form').classList.add('hidden')
-        form.reset()
-    }
-
     this.editUser = function editUser(event){
         event.preventDefault()
         var form = event.target
-        timeService.changeName(form.name.value, drawUserName)
-        document.getElementById('user-form').classList.add('hidden')
+        timeService.editUser(form.name.value)
         form.reset()
+        drawUserName()
     }
 
     twelveClock()
     twentyfourClock()
-    timeService.getUsers(drawUserName)
+    drawUserName()
 
 
 }
